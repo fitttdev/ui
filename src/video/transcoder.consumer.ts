@@ -11,7 +11,7 @@ export class TranscodeConsumer extends WorkerHost {
     this.logger.log(`Transcoding Job: ${job.id}`);
     this.logger.log(`DATA: ${JSON.stringify(job.data)}`);
     // emulating transcoding or a heavy operation
-    await new Promise<void>((resolve) => setTimeout(() => resolve(), 10000));
+    await new Promise<void>((resolve) => setTimeout(() => resolve(), 3000));
     this.logger.log(`Transcoding finished for job ${job.id}`);
   }
 }
