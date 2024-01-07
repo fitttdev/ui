@@ -11,8 +11,9 @@ export class VideoService {
   ) { }
 
   async transcode() {
-    await this.transcodeQueue.add('transcode', {
+    await this.transcodeQueue.add(TRASCODE_QUEUE, {
       fileName: "file.mp3"
     });
+    console.log("Job still processing");
   }
 }
