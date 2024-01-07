@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
 import { BullModule } from '@nestjs/bullmq';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { TRASCODE_QUEUE, TranscoderModule } from './video';
-
+import { TranscoderModule } from './video';
 import { AppController } from './app.controller';
+import { BullBoardModule } from "@bull-board/nestjs";
+import { ExpressAdapter } from "@bull-board/express";
 
 @Module({
   imports: [
@@ -19,8 +20,9 @@ import { AppController } from './app.controller';
       }),
       inject: [ConfigService]
     }),
-    BullModule.registerQueue({
-      name: TRASCODE_QUEUE
+    BullBoardModule.forRoot({
+      route: '/admin/queues',
+      adapter: ExpressAdapter,
     }),
   ],
   controllers: [AppController],
