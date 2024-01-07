@@ -11,6 +11,7 @@ export class VideoService {
   ) { }
 
   async transcode() {
+    // Delegating heaby operation to background
     await this.transcodeQueue.add(TRASCODE_QUEUE, {
       fileName: "file.mp3"
     });
