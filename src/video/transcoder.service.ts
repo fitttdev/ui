@@ -6,8 +6,8 @@ import { InjectQueue } from '@nestjs/bullmq';
 
 @Injectable()
 export class VideoService {
-  constructor(@InjectQueue(TRASCODE_QUEUE)
-  private readonly transcodeQueue: Queue
+  constructor(
+    @InjectQueue(TRASCODE_QUEUE) private readonly transcodeQueue: Queue
   ) { }
 
   async transcode() {
